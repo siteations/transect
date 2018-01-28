@@ -1,6 +1,7 @@
 import secret from '../client_secret_old.json';
 import './googleapi.js';
 import tsvObj from './publicTempReader.js';
+import {sort} from './publicTempReader.js';
 
       var CLIENT_ID = secret.web.client_id;
       var API_KEY = secret.web.apikey;
@@ -48,22 +49,36 @@ import tsvObj from './publicTempReader.js';
       }
 
       /**
-       *  Sign out the user upon button click.
-       */
-      // function handleSignoutClick(event) {
-      //   gapi.auth2.getAuthInstance().signOut();
-      // }
-
-      /**
        * Append a pre element to the body containing the given message
        * as its text node. Used to display the results of the API call.
        *
        * @param {string} message Text to be placed in pre element.
        */
-      function appendPre(message) {
-        var pre = document.getElementById('content');
-        var textContent = document.createTextNode(message + '\n');
-        pre.appendChild(textContent);
+      // function appendPre(message, link) {
+      //   var pre = document.getElementById('content');
+      //   var href = document.createElement('a');
+      //   var br = document.createElement('br');
+      //   href.href = link;
+      //   href.target = '_blank';
+      //   var textContent = document.createTextNode(message + '\n');
+      //   href.append(textContent);
+      //   pre.appendChild(href);
+      //   pre.appendChild(br);
+      // }
+
+      function swap (file, link, rows){
+        var rowsRev = rows.map(row=>{
+          if (file.name === row.src){
+            row.src = link;
+          } else if (file.name === row.paneimageurl){
+            row.paneimageurl = link;
+          }
+          return row;
+        })
+
+        return rowsRev;
+
+
       }
 
       /**
@@ -71,20 +86,33 @@ import tsvObj from './publicTempReader.js';
        */
       function listFiles(objComp) {
         var filesFound = gapi.client.drive.files.list({
-          'pageSize': 10,
-          'fields': "nextPageToken, files(id, name)"
+          'pageSize': 100,
+          'fields': "nextPageToken, files(id, name, fileExtension, webContentLink)"
         }).then(function(response) {
 
-          console.log(objComp);
+          console.log(objComp, sort(objComp));
+          //
 
-          appendPre('Files:');
+          //appendPre('Files:');
           var files = response.result.files;
+          var objUpdated = objComp;
+
 
           if (files && files.length > 0) {
             for (var i = 0; i < files.length; i++) {
               var file = files[i];
-              appendPre(file.name + ' (' + file.id + ')');
+
+              var link = (file.webContentLink)? file.webContentLink.replace('&export=download', '') : null;
+
+              if (file.fileExtension === 'jpg'||file.fileExtension === 'png'||file.fileExtension === 'svg'){
+
+                objUpdated = swap (file, link, objUpdated);
+                //appendPre(file.name + ' (' + file.id + ')', link);
+
+              }
+
             }
+            console.log(objUpdated);
           } else {
             appendPre('No files found.');
           }

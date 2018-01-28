@@ -40,14 +40,103 @@ const tsvObj = axios.get(sheetlink)
 
     //console.log(sheetJson); //once we have the sheet as json.... need to order objects and then assemble from contents
 
-    return sort(sheetJson);
+    return sheetJson;
 
 }).catch(console.log);
 
 
-function sort(rowsJson){
+export function sort(rowsJson){
+    var slides=[];
+    var base = 0, intern=0;
+    var obj = {};
 
-    return rowsJson;
+    rowsJson.forEach(row=>{
+        if (row.type==='base' && row.subtype==='background'){
+            obj = {
+                slideSeries: base,
+                background: row.src,
+                title : row.coretitle,
+                additions: [],
+            } //clear and start again
+
+             base ++;
+
+            slides.push(obj);
+            intern = slides.length-1;
+        }
+
+        if (row.type==='add' && row.subtype==='overlay'){
+            var obj = slides[intern]; //current object
+            obj.additions.push({
+                overlay: row.src,
+                newTitle: row.coretitle,
+                pane: null,
+                tooltip: null,
+            });
+            //console.log(slides);
+
+        }
+
+        if (row.type==='add' && row.subtype==='pane'){
+            var obj = slides[intern]; //current object
+            if (obj.additions.length > 0 &&  obj.additions[obj.additions.length-1].pane===null){ // no current additions, just add overlay pane
+                obj.additions[obj.additions.length-1].pane = [{
+                            type: row.panetype,
+                            title: row.panetitle,
+                            src: row.paneimageurl,
+                            caption: row.panecaption,
+                            source: row.panesource,
+                            text: row.panetext,
+                    }];
+            } else if (obj.additions.length === 0 ){ // current additions
+
+                    obj.additions.push({
+                        overlay: null,
+                        newTitle: null,
+                        pane: [{
+                            type: row.panetype,
+                            title: row.panetitle,
+                            src: row.paneimageurl,
+                            caption: row.panecaption,
+                            source: row.panesource,
+                            text: row.panetext,
+                        }],
+                        tooltip: null,
+                    });
+            } else {
+                obj.additions[obj.additions.length-1].pane. push({
+                            type: row.panetype,
+                            title: row.panetitle,
+                            src: row.paneimageurl,
+                            caption: row.panecaption,
+                            source: row.panesource,
+                            text: row.panetext,
+                    });
+            }
+
+        }; //panes checked
+
+        if (row.type==='add' && row.subtype==='tooltip'){
+            //console.log(row, slides)
+            var obj = slides[intern]; //current object
+            if (obj.additions.length > 0 &&  obj.additions[obj.additions.length-1].tooltip===null) { // no current additions, just add overlay pane
+                obj.additions[obj.additions.length-1].tooltip = row.src
+            } else { // current additions
+                    obj.additions.push({
+                        overlay: null,
+                        newTitle: null,
+                        pane: null,
+                        tooltip: row.src,
+                    });
+            }
+
+        } //tooltips checked
+
+
+
+    })
+
+    return slides;
 }
 
 export default tsvObj;
