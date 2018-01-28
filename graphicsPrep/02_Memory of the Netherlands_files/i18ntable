@@ -1,0 +1,822 @@
+var i18n = {table: {
+	"all": {
+		"default": {
+			"yes": {"nl": {"sg": "Ja"}},
+			"no": {"nl": {"sg": "Nee"}},
+			"sort_by": {"nl": {"sg": "Sorteer op"}},
+			"search_button": {"nl": {"sg": "Zoek"}},
+			"results_for": {"nl": {"sg": "Resultaten voor"}},
+			"waiting_for_filter": {"nl": {"sg": "Bezig met ophalen lijst"}},
+			"searching": {"nl": {"sg": "Bezig met zoeken"}},
+			"developers": { "nl": {"sg": "Ontwikkeld door de Koninklijke Bibliotheek"}},
+			"previous_result": { "nl": {"sg": "vorig resultaat"}},
+			"next_result": { "nl": {"sg": "volgend resultaat"}},
+			"favourites_title": {"nl": {"sg": "Favorieten"}},
+			"back_to_list": {"nl": {"sg": "Resultaten"}},
+			"favourites_disclaimer": {"nl": {"sg" : "Delpher bewaart favorieten in de geschiedenis van uw browser. <span>Bij het wissen van uw browsergeschiedenis wordt de lijst geleegd.</span>"}},
+			"favourites_no_items_added": {
+				"nl": {"sg": "U heeft nog geen favorieten toegevoegd."},
+				"en": {"sg": "No favourites added."}
+			},
+			"favourites_date_added_asc": {"nl": {"sg": "Datum toegevoegd (oplopend)"}},
+			"favourites_date_added_desc": {"nl": {"sg": "Datum toegevoegd (aflopend)"}},
+			"favourites_remove_all": {"nl": {"sg": "Hele favorietenlijst wissen?"}},
+			"favourites_list_header": {"nl": {"sg": "Favoriete objecten"}},
+			"favourites_list_basename_file": {"nl": {"sg": "favorieten"}},
+			"favourites_remove_list": {"nl": {"sg": "Wis hele favorietenlijst"}},
+			"favourites_download_list": {"nl": {"sg": "Favorietenlijst opslaan als tekstbestand"}},
+			"favourites_download_list|txt": {"nl": {"sg": "Favorietenlijst opslaan als tekstbestand"}},
+			"image": { "nl": {"sg": "Beeld"}},
+			"ocr": { "nl": {"sg": "Tekst"}},
+			"info": { "nl": {"sg": "Details"}},
+			"open_fullscreen_link": { "nl": {"sg": "Volledig scherm"}},
+			"close_fullscreen_link": { "nl": {"sg": "Sluit volledig scherm"}},
+			"sharing_options": { "nl": {"sg" : "Deel" }},
+			"imageclip_print": { "nl": { "sg": "Afdrukken"}},
+			"add_favourite": {"nl": {"sg": "Voeg toe aan favorieten"}},
+			"added_to_favourites": {"nl": {"sg": "is toegevoegd aan uw favorieten"}, "en": {"sg": "is added to favourites"}},
+			"show_your_favourites": {"nl": {"sg": "Bekijk favorieten"}, "en": {"sg": "Show your favourites"}},
+			"close": {"nl": {"sg": "Sluiten"}},
+			"removed_from_favourites": {"nl": {"sg": "Verwijderd uit favorietenlijst"}},
+			"persistent_id": {"nl": {"sg": "Permanente URL "}},
+			"no_results": {"nl": {"sg": "Helaas, uw zoekopdracht heeft geen resultaten opgeleverd"}},
+			"filter_header": {"nl": {"sg": "Filteren"}},
+			"webpage_live": {"nl": {"sg": "Deze webpagina is in productie nu live gezet"}},
+			"updated_date": {"nl": {"sg": "Laatste aanpassing door [GEBRUIKERSNAAM]"}},
+			"imagetools_title": {"nl": {"sg": "Zoomen en navigeren"}},
+			"alert_closing_short_description": {"nl": {"sg": "Melding verbergen"}},
+			"scroll_lock_on": {"nl": {"sg": "Scrollwiel gebruiken om te scrollen"}},
+			"scroll_lock_off": {"nl": {"sg": "Scrollwiel gebruiken om te zoomen"}},
+			"searched_for": {"nl": {"sg": "Gezocht op"}},
+			"to_top": {"nl": {"sg": "Naar boven"}},
+			"terms_of_use": {"nl": {"pl": "Gebruiksvoorwaarden"}},
+			"static_pages_context_menu": {"nl": {"sg": "Menu"}},
+			"accessibility-next-column" : {
+				"nl": {"sg": "Volgende kolom"},
+				"en": {"sg": "Next column"}
+			},
+			"image_error": {"nl": {"sg": "Er was een probleem met het ophalen van de afbeelding.<br>Probeer het later nog eens."}}
+		},
+		"breadcrumbs": {
+			"not": {"nl": { "sg": "niet"}},
+			"and": {"nl": {"sg": "en"}},
+			"or": {"nl": {"sg": "of"}},
+			"until_infix": { "nl": {"sg": "t/m" }},
+			"not|date": {"nl": { "sg": "is niet gelijk aan:"}},
+			"_lte_|date": {"nl": {"sg": "tot en met" }},
+			"_gte_|date": {"nl": {"sg": "vanaf" }},
+			"_lte_|date|prefix": {"nl": {"sg": "tot" }},
+			"_gte_|date|prefix": {"nl": {"sg": "van" }},
+			"_lt_|date": {"nl": {"sg": "na" }},
+			"_gt_|date": {"nl": {"sg": "voor" }},
+			"=|date": {"nl": {"sg": "is gelijk aan:" }},
+			"exact|date": {"nl": {"sg": "is gelijk aan:" }},
+			"not|text": {"nl": { "sg": "bevat geen van deze woorden:"}},
+			"exact|text": {"nl": { "sg": "bevat dit exacte zinsdeel:"}},
+			"=|text": {"nl": { "sg": "bevat dit exacte zinsdeel:"}},
+			"all|text": {"nl": {"sg": "bevat al deze woorden:"}},
+			"any|text": {"nl": {"sg": "bevat een van deze woorden:"}},
+			"not|string": {"nl": { "sg": "is niet gelijk aan:"}},
+			"exact|string": {"nl": { "sg": "is gelijk aan:"}},
+			"=|string": {"nl": { "sg": "is gelijk aan:"}},
+			"=|simple": {"nl": { "sg": "is gelijk aan:"}},
+			"any|string": {"nl": { "sg": "is gelijk aan:"}},
+			"all|simple": {"nl": {"sg": "bevat al deze woorden"}},
+			"any|simple": {"nl": {"sg": "bevat een van deze woorden"}},
+			"exact|simple": {"nl": {"sg": "bevat dit exacte zinsdeel"}},
+			"not|simple": {"nl": {"sg": "bevat geen van deze woorden"}}
+		},
+		"results": {
+			"found_for": {
+				"nl": {"sg": "gevonden voor"},
+				"en": {"sg": "found for"}
+			},
+			"have_been_found": {"nl": {"sg": "gevonden"}},
+			"pick_more": {"nl": {"sg": "Kies meer..."}},
+			"pick_named": {"nl": {"sg": "Kies $1..."}},
+			"filter_query_short": {"nl": {"sg": "Filter"}},
+			"filter_query": {"nl": {"sg": "Filter resultaten"}},
+			"maxperpage": {"nl": {"sg": "Resultaten per pagina"}},
+			"jump_to_page": {"nl": {"sg": "Naar pagina:"}},
+			"go": {"nl": {"sg": ""}},
+			"named_contains": {"nl": {"sg": "$1 bevat"}},
+			"all_details": {"nl": {"sg": "Alle details"}},
+			"cancel": {"nl": {"sg": "Annuleer"}},
+			"selected": {"nl": {"sg": "Geselecteerd"}},
+			"of": {"nl": {"sg": "van"}},
+			"results": {"nl": {"sg": "resultaat", "pl": "resultaten"}},
+			"no_results_message": {"nl": {"sg": "Helaas, uw zoekopdracht heeft geen resultaten opgeleverd."}},
+			"no_results_info": {"nl": {"sg": "Verander uw zoekopdracht"}},
+			"no_results_extra": {"nl": {"sg": "of bekijk de resultaten voor "}},
+			"no_results_extra_2": {"nl": {"sg": " van:"}},
+			"no_results_info_noscript": {"nl": {"sg": "Verander uw zoekopdracht of bekijk de resultaten van andere materialen"}},
+			"parse_error_info": {"nl": {"sg": "De zoekmachine kon uw zoekvraag niet verwerken:"}},
+			"show_tech_details": {"nl": {"sg": "Technische details"}},
+			"show_filters": {"nl": {"sg": "Filter resultaten"}},
+			"alas": {"nl": {"sg": "Helaas"}}
+		}
+	},
+	"ngvn": {
+		"default": {
+			"search_hint": {
+				"nl": {"sg": "Doorzoek het Geheugen van Nederland"},
+				"en": {"sg": "Search the Memory of the Netherlands"}
+			},
+			"search_hint_short": {
+				"nl": {"sg": "Zoeken..."},
+				"en": {"sg": "Search..."}
+			},
+			"search_button": {
+				"nl": {"sg": "Zoeken"},
+				"en": {"sg": "Search"}
+			},
+			"search-control-tooltip": {
+				"nl": {"sg": "Zoek"},
+				"en": {"sg": "Search"}
+			},
+			"show-search-input-tooltip": {
+				"nl": {"sg": "Toon zoekveld"},
+				"en": {"sg": "Show search box"}
+			},
+			"show-search-input-next-tooltip": {
+				"nl": {"sg": "Sluit zoekveld"},
+				"en": {"sg": "Close search box"}
+			},
+			"tagline": {
+				"nl": {"sg": "<span class='logo-block__heading-inline-wrapper'>Geheugen </span>van Nederland"},
+				"en": {"sg": "Memory of the Netherlands"}
+			},
+			"website-title": {
+				"nl": {"sg": "Geheugen van Nederland"},
+				"en": {"sg": "Memory of the Netherlands"}
+			},
+			"goto-homepage" : {
+				"nl" : {"sg" : "Ga naar de homepage"},
+				"en" : {"sg" : "Go to the homepage"}
+			},
+			"surprise-me": {
+				"nl": {"sg": "Verras mij"},
+				"en": {"sg": "Surprise me"}
+			},
+			"collections-link-text": {
+				"nl": {"sg": "Collecties"},
+				"en": {"sg": "Collections"}
+			},
+			"institutions-link-text": {
+				"nl": {"sg": "Instellingen"},
+				"en": {"sg": "Institutions"}
+			},
+			"themes-link-text": {
+				"nl": {"sg": "Thema's"},
+				"en": {"sg": "Themes"}
+			},
+			"about-link-text": {
+				"nl": {"sg": "Over het Geheugen van Nederland"},
+				"en": {"sg": "About the Memory of the Netherlands"}
+			},
+			"about-link-text-short": {
+				"nl": {"sg": "Over"},
+				"en": {"sg": "About"}
+			},
+			"search-help": {
+				"nl": {"sg": "Hulp bij Zoeken"},
+				"en": {"sg": "Search Help"}
+			},
+			"collection-previews-for": {
+				"nl": {"sg": "Voorbeelden uit deze collectie "},
+				"en": {"sg": "Examples from this collection"}
+			},
+			"show-all-results-for-collection": {
+				"nl": {"sg": "Bekijk alle afbeeldingen uit deze collectie"},
+				"en": {"sg": "View all images of this collection"}
+			},
+			"collection-subtitle": {
+				"nl": {"sg": "Een collectie van"},
+				"en": {"sg": "A collection of the"}
+			},
+			"menu-control-tooltip": {
+				"nl": {"sg": "Toon menu"},
+				"en": {"sg": "Show menu"}
+			},
+			"menu-control-next-tooltip": {
+				"nl": {"sg": "Sluit menu"},
+				"en": {"sg": "Close menu"}
+			},
+			"menu-parentlink-information": {
+				"nl": {"sg": "Introductie"},
+				"en": {"sg": "Introduction"}
+			},
+			"favourites-control-tooltip": {
+				"nl": {"sg": "Mijn favorieten"},
+				"en": {"sg": "My favourites"}
+			},
+			"empty-favourites-list": {
+				"nl": {"sg": "U heeft nog geen favorieten toegevoegd"},
+				"en": {"sg": "No favourites added"}
+			},
+			"populated-favourites-list": {
+				"nl": {"sg": "favoriet toegevoegd", "pl": "favorieten toegevoegd"},
+				"en": {"sg": "favourite added", "pl": "favourites added"}
+			},
+			"developed-by": {
+				"nl": {"sg": "Ontwikkeld door de "},
+				"en": {"sg": "Developed by the "}
+			},
+			"the-kb-nln": {
+				"nl": {"sg": "Koninklijke Bibliotheek"},
+				"en": {"sg": "KB - National Library of the Netherlands"}
+			},
+			"current-page-indicator": {
+				"nl": {"sg": "Pagina"},
+				"en": {"sg": "Page"}
+			},
+			"current-page-continuation-link": {
+				"nl": {"sg": "Volgende"},
+				"en": {"sg": "Next"}
+			},
+			"collections-overview-title": {
+				"nl": {"sg": "Collecties"},
+				"en": {"sg": "Collections"}
+			},
+			"institutions-overview-title": {
+				"nl": {"sg": "Instellingen"},
+				"en": {"sg": "Institutions"}
+			},
+			"show-more": {
+				"nl": {"sg": "Toon meer"},
+				"en": {"sg": "Show more"}
+			},
+			"close-servicemessage-tooltip": {
+				"nl": {"sg": "Sluit mededeling"},
+				"en": {"sg": "Close message"}
+			},
+			"page-top-tooltip": {
+				"nl": {"sg": "Naar boven"},
+				"en": {"sg": "To top"}
+			},
+			"found_for": {
+				"nl": {"sg": "resultaten voor"},
+				"en": {"sg": "results for"}
+			},
+			"showpiece": {
+				"nl": {"sg": "topstuk", "pl": "topstukken"},
+				"en": {"sg": "showpiece", "pl": "showpieces"}
+			},
+			"error-page-not-found-title": {
+				"nl": {"sg": "Pagina niet gevonden"},
+				"en": {"sg": "Page not found"}
+			},
+			"error-page-not-found-information": {
+				"nl": {"sg": "De pagina die u zoekt bestaat niet."},
+				"en": {"sg": "The page you are looking for does not exist."}
+			},
+			"error-page-not-found-alternative-page": {
+				"nl": {"sg": "Klik hier om naar de homepagina te gaan."},
+				"en": {"sg": "Click here to return to the homepage."}
+			},
+			"accessibility-go-to-first-object" : {
+				"nl": {"sg": "Ga naar het eerste object"},
+				"en": {"sg": "Go to first object"}
+			},
+			"accessibility-go-to-first-result" : {
+				"nl": {"sg": "Ga naar het eerste resultaat"},
+				"en": {"sg": "Go to first result"}
+			},
+			"accessibility-go-to-object" : {
+				"nl": {"sg": "Ga naar object"},
+				"en": {"sg": "Go to object"}
+			},
+			"accessibility-go-to-page-content" : {
+				"nl": {"sg": "Ga naar inhoud pagina"},
+				"en": {"sg": "Go to page content"}
+			},
+			"noscript-warning-message": {
+				"nl": {"sg": "Om het Geheugen van Nederland te kunnen gebruiken moet JavaScript zijn ingeschakeld."},
+				"en": {"sg": "Please enable JavaScript for using Memory of the Netherlands"}
+			}
+		},
+		"themes": {
+			"themes-overview-title": {
+				"nl": {"sg": "Overzicht Thema's"},
+				"en": {"sg": "Thematical overview"}
+			},
+			"subtheme-header": {
+				"nl": {"sg": "Subthema's"},
+				"en": {"sg": "Subthemes"}
+			},
+			"theme-header": {
+				"nl": {"sg": "Thema's"},
+				"en": {"sg": "Themes"}
+			},
+			"hist-title": {
+				"nl": {"sg": "Geschiedenis en samenleving"},
+				"en": {"sg": "History and society"}
+			},
+			"hist-description": {
+				"nl": {"sg": "Kolonisatie,verstedelijking, oorlog, het Huis van Oranje en de verzorgingsstaat: belangrijke thema's uit het Nederlands verleden."},
+				"en": {"sg": "Colonization, war, the House of Orange and the welfare state: important themes in Dutch history."}
+			},
+			"art-title": {
+				"nl": {"sg": "Kunst en cultuur"},
+				"en": {"sg": "Art and culture"}
+			},
+			"art-description": {
+				"nl": {"sg": "Van Jeroen Bosch tot Peter van Straaten en van straatliedjes tot dichtkunst: erfenissen uit de nationale (volks)cultuur."},
+				"en": {"sg": "From Hieronymus Bosch to Peter van Straaten and from popular ballads to poetry: the legacies of Dutch (folk) culture."}
+			},
+			"geo-title": {
+				"nl": {"sg": "Ruimte en omgeving"},
+				"en": {"sg": "Geography and environment"}
+			},
+			"geo-description": {
+				"nl": {"sg": "Het aanzicht van de lage landen: landschap, natuur, vondsten uit de bodem, verstedelijking en de eeuwenoude band met het water."},
+				"en": {"sg": "The Low Countries at first sight: landscape, nature, archeological findings, urbanization and the inextricable bond with water."}
+			},
+			"com-title": {
+				"nl": {"sg": "Media en communicatie"},
+				"en": {"sg": "Communication and media"}
+			},
+			"com-description": {
+				"nl": {"sg": "Nederland in het mediatijdperk: opkomst van radio, tv, film en andere vormen van populaire cultuur."},
+				"en": {"sg": "The Netherlands in the media age: the rise of radio, TV, film and other forms of popular culture."}
+			},
+			"hist-subtheme-description-0": {
+				"nl": {"sg": "Handel, emancipatievraagstukken, de arbeidersbeweging en meer."},
+				"en": {"sg": "Trade, emancipation issues, workers' movement and more."}
+			},
+			"hist-subtheme-description-1": {
+				"nl": {"sg": "Erfenissen van het koloniale verleden."},
+				"en": {"sg": "The Netherlands' colonial heritage."}
+			},
+			"hist-subtheme-description-2": {
+				"nl": {"sg": "Strijd, verraad en verzet: de oorlogsperiode(n)."},
+				"en": {"sg": "Conflict, treason and resistance: the war period(s)."}
+			},
+			"hist-subtheme-description-3": {
+				"nl": {"sg": "Het wel en wee van de Oranjes en de Hollandse democratie in de praktijk."},
+				"en": {"sg": "A close look at the House of Orange and Dutch democracy in practice."}
+			},
+			"hist-subtheme-description-4": {
+				"nl": {"sg": "Het geloof van de Nederlander."},
+				"en": {"sg": "Faith(s) of the Dutch."}
+			},
+			"art-subtheme-description-0": {
+				"nl": {"sg": "Schilders, beeldhouwers, tekenaars en ontwerpers van de 16e eeuw tot nu."},
+				"en": {"sg": "Painters, sculptors, graphic artists and designers from the 16th century to the present."}
+			},
+			"art-subtheme-description-1": {
+				"nl": {"sg": "(Gevonden) voorwerpen uit zee, stad en land."},
+				"en": {"sg": "(Found) objects from sea, city and land."}
+			},
+			"art-subtheme-description-2": {
+				"nl": {"sg": "Naar de letter: Nederlandse poёzie en proza."},
+				"en": {"sg": "A matter of Letters: Dutch poetry and prose."}
+			},
+			"art-subtheme-description-3": {
+				"nl": {"sg": "Kledingontwerp als kunst."},
+				"en": {"sg": "Clothes design as an art."}
+			},
+			"art-subtheme-description-4": {
+				"nl": {"sg": "Van het Oud-Hollands poppenspel tot de klassieke composities van Alphons Diepenbrock."},
+				"en": {"sg": "From traditional Dutch puppet theatre to the classical compositions of Alphons Diepenbrock."}
+			},
+			"geo-subtheme-description-0": {
+				"nl": {"sg": "Vondsten uit het verre verleden."},
+				"en": {"sg": "Remnants of the distant past."}
+			},
+			"geo-subtheme-description-1": {
+				"nl": {"sg": "De wereld in kaart gebracht."},
+				"en": {"sg": "The world mapped out."}
+			},
+			"geo-subtheme-description-2": {
+				"nl": {"sg": "Inrichting en bebouwing van stad en land."},
+				"en": {"sg": "Arrangement and development of land and urban regions."}
+			},
+			"geo-subtheme-description-3": {
+				"nl": {"sg": "Flora en fauna."},
+				"en": {"sg": "Flora and fauna."}
+			},
+			"geo-subtheme-description-4": {
+				"nl": {"sg": "De liefde voor en het gevecht tegen het water."},
+				"en": {"sg": "The love for and fight against water."}
+			},
+			"com-subtheme-description-0": {
+				"nl": {"sg": "De scherpe blik van de spotprenttekenaar."},
+				"en": {"sg": "The sharp pen of the political cartoonist."}
+			},
+			"com-subtheme-description-3": {
+				"nl": {"sg": "Nederland vastgelegd in bewegende beelden."},
+				"en": {"sg": "The Netherlands in motion."}
+			},
+			"com-subtheme-description-1": {
+				"nl": {"sg": "Hollandse pop van Anita Meijer tot Zuco 103."},
+				"en": {"sg": "Dutch pop from Anita Meijer to Zuco 103."}
+			},
+			"com-subtheme-description-2": {
+				"nl": {"sg": "Verleiding als vak: reclamefolders, -filmpjes en -affiches."},
+				"en": {"sg": "The art of seduction: advertising brochures, commercials and publicity posters."}
+			},
+			"com-subtheme-description-4": {
+				"nl": {"sg": "Van 'Open het dorp' tot het Simplisties Verbond."},
+				"en": {"sg": "From 'Open het dorp' to the Simplisties Verbond."}
+			}
+		},
+		"results": {
+			"searchResultsPageTitle": {
+				"nl": {"sg": "Zoekresultaten"},
+				"en": {"sg": "Searchresults"}
+			},
+			"objectname": {
+				"nl": {"sg": "object", "pl": "objecten"},
+				"en": {"sg": "object", "pl": "objects"}
+			},
+			"image-count-infix": {
+				"nl": {"sg": "beelden"},
+				"en": {"sg": "objects"}
+			},
+			"image-count-infix2": {
+				"nl": {"sg": "uit"},
+				"en": {"sg": "from"}
+			},
+			"collections-link-text": {
+				"nl": {"sg": "collecties"},
+				"en": {"sg": "collections"}
+			},
+			"collections-institutions-infix": {
+				"nl": {"sg": "van"},
+				"en": {"sg": "of"}
+			},
+			"institutions-link-text": {
+				"nl": {"sg": "instellingen"},
+				"en": {"sg": "institutions"}
+			},
+			"collections-overview-title": {
+				"nl": {"sg": "Collecties"},
+				"en": {"sg": "Collections"}
+			},
+			"institutions-overview-title": {
+				"nl": {"sg": "Instellingen"},
+				"en": {"sg": "Institutes"}
+			},
+			"sort-asc": {
+				"nl": {"sg": "A - Z"},
+				"en": {"sg": "A - Z"}
+			},
+			"sort-desc": {
+				"nl": {"sg": "Z - A"},
+				"en": {"sg": "Z - A"}
+			},
+			"sort-asc-date": {
+				"nl": {"sg": "0 - 9"},
+				"en": {"sg": "0 - 9"}
+			},
+			"sort-desc-date": {
+				"nl": {"sg": "9 - 0"},
+				"en": {"sg": "9 - 0"}
+			},
+			"sort-by": {
+				"nl": {"sg": "Sorteer op:"},
+				"en": {"sg": "Sort by:"}
+			},
+			"alphabet": {
+				"nl": {"sg": "Alfabetische volgorde"},
+				"en": {"sg": "Alphabet"}
+			},
+			"numberOfResults": {
+				"nl": {"sg": "Aantal hits"},
+				"en": {"sg": "Number of results"}
+			},
+			"favourite-control-tooltip": {
+				"nl": {"sg": "Markeer als favoriet"},
+				"en": {"sg": "Mark as favourite"}
+			},
+			"favourite-control-next-tooltip": {
+				"nl": {"sg": "Verwijder uit favorieten"},
+				"en": {"sg": "Remove from favourites"}
+			},
+			"creator": {
+				"nl": {"sg": "Maker"},
+				"en": {"sg": "Creator"}
+			},
+			"created": {
+				"nl": {"sg": "Vervaardigingsjaar"},
+				"en": {"sg": "Date of creation"}
+			},
+			"collectionString": {
+				"nl": {"sg": "Collectie"},
+				"en": {"sg": "Collection"}
+			},
+			"found_for": {
+				"nl": {"sg": "resultaten voor"},
+				"en": {"sg": "results for"}
+			},
+			"have_been_found": {
+				"nl": {"sg": "resultaten"},
+				"en": {"sg": "results"}
+			},
+			"remove-all-filters": {
+				"nl": {"sg": "Wis alle filters"},
+				"en": {"sg": "Remove all filters"}
+			},
+			"based_on_your_query": {
+				"nl": {"sg": "Op basis van uw zoekopdracht"},
+				"en": {"sg": "Based on your search query"}
+			},
+			"we_found_in_delpher": {
+				"nl": {"sg": "vonden wij op"},
+				"en": {"sg": "we found in"}
+			},
+			"no-results-in-delpher": {
+				"nl": {"sg": "Uw zoekopdracht levert geen resultaten op in "},
+				"en": {"sg": "Your search query provides no results in "}
+			},
+			"goto-page-control" : {
+				"nl": {"sg": "Ga"},
+				"en": {"sg": "Go"}
+			},
+			"jump-to-page": {
+				"nl": {"sg": "Naar pagina"},
+				"en": {"sg": "To page"}
+			},
+			"first-page-tooltip": {
+				"nl": {"sg": "Eerste pagina"},
+				"en": {"sg": "First page"}
+			},
+			"previous-page-tooltip": {
+				"nl": {"sg": "Vorige pagina"},
+				"en": {"sg": "Previous page"}
+			},
+			"last-page-tooltip": {
+				"nl": {"sg": "Laatste pagina"},
+				"en": {"sg": "Last page"}
+			},
+			"next-page-tooltip": {
+				"nl": {"sg": "Volgende pagina"},
+				"en": {"sg": "Next page"}
+			},
+			"notice-no-results-title": {
+				"nl": {"sg": "Geen resultaten"},
+				"en": {"sg": "No results"}
+			},
+			"notice-no-results-information": {
+				"nl": {"sg": "Uw zoekactie levert geen resultaten op. Verander uw zoekterm of pas de filters aan."},
+				"en": {"sg": "There are no results for your search. Change your search words or adapt the filter options."}
+			},
+			"malfunction-title": {
+				"nl": {"sg": "Serverfout"},
+				"en": {"sg": "Server failure"}
+			},
+			"malfunction-information": {
+				"nl": {"sg": "De pagina die u zoekt is momenteel niet bereikbaar."},
+				"en": {"sg": "The page you are looking for is not available at the moment."}
+			},
+			"facetset-title": {
+				"nl": {"sg": "Titel"},
+				"en": {"sg": "Title"}
+			},
+			"facetset-author": {
+				"nl": {"sg": "Naam maker"},
+				"en": {"sg": "Name of creator"}
+			},
+			"facetset-contributor": {
+				"nl": {"sg": "Persoonsnaam"},
+				"en": {"sg": "Name of person"}
+			},
+			"facetset-origin": {
+				"nl": {"sg": "Vervaardigingsplaats"},
+				"en": {"sg": "Place of creation"}
+			},
+			"facetset-locality": {
+				"nl": {"sg": "Plaatsnaam"},
+				"en": {"sg": "Geographic location"}
+			},
+			"filterbox-facetset-section-title": {
+				"nl": {"sg": "Uw zoekterm in"},
+				"en": {"sg": "Your keyword in"}
+			},
+			"filterbox-facets-section-title": {
+				"nl": {"sg": "Filter op"},
+				"en": {"sg": "Filter on"}
+			}
+		},
+		"view": {
+			"favourite-control-tooltip": {
+				"nl": {"sg": "Markeer als favoriet"},
+				"en": {"sg": "Mark as favourite"}
+			},
+			"show-zoom-menu-tooltip": {
+				"nl": {"sg": "Toon zoom opties"},
+				"en": {"sg": "Show zoom options"}
+			},
+			"hide-zoom-menu-tooltip": {
+				"nl": {"sg": "Verberg zoom-opties"},
+				"en": {"sg": "Hide zoom options"}
+			},
+			"hide-zoom-menu-next-tooltip": {
+				"nl": {"sg": "Toon zoom-opties"},
+				"en": {"sg": "Show zoom options"}
+			},
+			"zoom-in": {
+				"nl": {"sg": "Inzoomen"},
+				"en": {"sg": "Zoom in"}
+			},
+			"zoom-out": {
+				"nl": {"sg": "Uitzoomen"},
+				"en": {"sg": "Zoom out"}
+			},
+			"fullscreen-control-tooltip": {
+				"nl": {"sg": "Volledig scherm"},
+				"en": {"sg": "Full screen"}
+			},
+			"back-to-results": {
+				"nl": {"sg": "Zoekresultaten"},
+				"en": {"sg": "Search results"}
+			},
+			"prev-result": {
+				"nl": {"sg": "Vorig object"},
+				"en": {"sg": "Previous object"}
+			},
+			"next-result": {
+				"nl": {"sg": "Volgend object"},
+				"en": {"sg": "Next object"}
+			},
+			"more_theme_related_publications" : {
+				"nl" : {"sg": "Meer afbeeldingen uit dit thema"},
+				"en" : {"sg": "More images from this theme"}
+			},
+			"show_all_theme_related_publications" : {
+				"nl" : {"sg": "Bekijk alle afbeeldingen uit dit thema"},
+				"en" : {"sg": "View all images of this theme"}
+			},
+			"more_collection_related_publications" : {
+				"nl" : {"sg": "Meer afbeeldingen uit deze collectie"},
+				"en" : {"sg": "More images from this collection"}
+			},
+			"show_all_collection_related_publications" : {
+				"nl" : {"sg": "Bekijk alle afbeeldingen uit deze collectie"},
+				"en" : {"sg": "View all images of this collection"}
+			},
+			"small-image" : {
+				"nl" : {"sg": "Klein"},
+				"en" : {"sg": "Small"}
+			},
+			"medium-image" : {
+				"nl" : {"sg": "Middel"},
+				"en" : {"sg": "Medium"}
+			},
+			"large-image" : {
+				"nl" : {"sg": "Groot"},
+				"en" : {"sg": "Large"}
+			},
+			"download-image" : {
+				"nl" : {"sg": "Dit object downloaden"},
+				"en" : {"sg": "Download object"}
+			},
+			"jpeg-file" : {
+				"nl" : {"sg": "JPG-bestand"},
+				"en" : {"sg": "JPG-file"}
+			},
+			"terms-of-use" : {
+				"nl" : {"sg": "Gebruiksvoorwaarden"},
+				"en" : {"sg": "Terms of use"}
+			},
+			"scroll-left-tooltip" : {
+				"nl" : {"sg": "Blader terug"},
+				"en" : {"sg": "Browse back"}
+			},
+			"scroll-right-tooltip" : {
+				"nl" : {"sg": "Blader verder"},
+				"en" : {"sg": "Browse forward"}
+			},
+			"show-menu-tooltip" : {
+				"nl" : {"sg": "Toon info opties"},
+				"en" : {"sg": "Show info options"}
+			},
+			"hide-menu-tooltip" : {
+				"nl" : {"sg": "Verberg info-opties"},
+				"en" : {"sg": "Hide info options"}
+			},
+			"hide-menu-next-tooltip" : {
+				"nl" : {"sg": "Toon info-opties"},
+				"en" : {"sg": "Show info options"}
+			},
+			"show-information-tooltip" : {
+				"nl" : {"sg": "Toon informatie"},
+				"en" : {"sg": "Show information"}
+			},
+			"show-information-next-tooltip" : {
+				"nl" : {"sg": "Sluit informatie"},
+				"en" : {"sg": "Close information"}
+			},
+			"hide-information-tooltip" : {
+				"nl" : {"sg": "Sluit informatie"},
+				"en" : {"sg": "Close information"}
+			},
+			"show-download-tooltip" : {
+				"nl" : {"sg": "Toon download-opties"},
+				"en" : {"sg": "Show download options"}
+			},
+			"show-download-next-tooltip" : {
+				"nl" : {"sg": "Sluit download-opties"},
+				"en" : {"sg": "Close download options"}
+			},
+			"hide-download-tooltip" : {
+				"nl" : {"sg": "Sluit download"},
+				"en" : {"sg": "Close download"}
+			},
+			"show-share-tooltip" : {
+				"nl" : {"sg": "Delen"},
+				"en" : {"sg": "Share"}
+			},
+			"hide-share-tooltip" : {
+				"nl" : {"sg": "Sluit delen"},
+				"en" : {"sg": "Close share"}
+			},
+			"persistent-identifier" : {
+				"nl" : {"sg": "Permalink"},
+				"en" : {"sg": "Permalink"}
+			},
+			"show-persistent-identifier" : {
+				"nl" : {"sg": "Link tonen"},
+				"en" : {"sg": "Show link"}
+			},
+			"persistent-identifier-information" : {
+				"nl" : {"sg": "De permanente URL zorgt ervoor dat ieder digitaal object vindbaar blijft op internet, ook al verandert de naam van de website of het object. Wanneer u wilt verwijzen naar objecten in het Geheugen van Nederland kunt u het beste deze permanente link gebruiken in plaats van de link in de adresbalk van de browser."},
+				"en" : {"sg": "The permalink or permanent URL guarantees that an object can be traced back on the internet in the future, even if the name of the website or the object changes. If you want to link objects in Memory of the Netherlands it is advised to use the Permalink and not the URL in the address bar of your browser."}
+			},
+			"title" : {
+				"nl" : {"sg": "Titel"},
+				"en" : {"sg": "Title"}
+			},
+			"creator" : {
+				"nl" : {"sg": "Maker"},
+				"en" : {"sg": "Creator"}
+			},
+			"date-of-creation" : {
+				"nl" : {"sg": "Vervaardigingsjaar"},
+				"en" : {"sg": "Date of creation"}
+			}
+		}
+	},
+	"boeken": {
+		"results": {
+			"objectname": {
+				"nl": {"sg": "boek", "pl": "boeken"},
+				"en": {"sg": "book", "pl": "books"}
+			},
+			"in_the_subcoll":  {
+				"nl": {"sg": "in de basiscollectie"},
+				"en": {"sg": "in the core collection"}
+			}
+		}
+	},
+	"boeken1": {
+		"results": {
+			"objectname": {
+				"nl": {"sg": "boek", "pl": "boeken"},
+				"en": {"sg": "book", "pl": "books"}
+			},
+			"in_the_subcoll":  {
+				"nl": {"sg": "in de Googlecollectie"},
+				"en": {"sg": "in the Google collection"}
+			}
+		}
+	},
+	"dts": {
+		"results": {
+			"objectname": {
+				"nl": {"sg": "tijdschrift", "pl": "tijdschriften"},
+				"en": {"sg": "periodical", "pl": "periodicals"}
+			},
+			"in_the_subcoll":  {"nl": {"sg": ""}, "en": {"sg": ""}}
+		}
+	},
+	"ddd": {
+		"results": {
+			"objectname": {
+				"nl": {"sg": "krantenartikel", "pl": "krantenartikelen"},
+				"en": {"sg": "newspaper articles", "pl": "newspaper articles"}
+			},
+			"in_the_subcoll":  {"nl": {"sg": ""}, "en": {"sg": ""}}
+		}
+	},
+	"dddtitel": {
+		"results": {
+			"objectname": {
+				"nl": {"sg": "krant", "pl": "kranten"},
+				"en": {"sg": "newspaper", "pl": "newspapers"}
+			},
+			"in_the_subcoll": {"nl": {"sg": ""}, "en": {"sg" : ""}}
+		}
+	},
+	"anp": {
+		"results": {
+			"objectname": {
+				"nl": {"sg": "radiobulletin", "pl": "radiobulletins"},
+				"en": {"sg": "radio bulletin", "pl": "radio bulletins"}
+			},
+			"in_the_subcoll":  {"nl": {"sg": ""}, "en": {"sg": ""}}
+		}
+	}
+}
+};

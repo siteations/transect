@@ -1,52 +1,96 @@
-import axios from 'axios';
+import secret from '../client_secret_old.json';
+import './googleapi.js';
+import tsvObj from './publicTempReader.js';
 
+      var CLIENT_ID = secret.web.client_id;
+      var API_KEY = secret.web.apikey;
+      var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
 
-const sheetlink = `https://docs.google.com/spreadsheets/d/e/2PACX-1vReeXJJvN0cVl9WtRiJZGOM7Cy1ATJ0k2nvE3aXBjKdBn4y40eGE1qtlMlX43F8gWN7WgLQR3xmDWTp/pub?output=tsv`;
+      var SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
 
-axios.get(sheetlink)
-	.then(res => {
+      // var authorizeButton = document.getElementById('authorize-button');
+      // var signoutButton = document.getElementById('signout-button');
 
+      /**
+       *  On load, called to load the auth2 library and API client library.
+       */
+      function handleClientLoad() {
 
-    var rows =res.data.split('\r');
-    var headerRow = rows.shift(), header = headerRow.split(/\t/gi);
+        gapi.load('client:auth2', initClient);
+      }
 
-    console.log(rows);
+      /**
+       *  Initializes the API client library and sets up sign-in state
+       *  listeners.
+       */
+      function initClient() {
+        var allFiles = gapi.client.init({
+          apiKey: API_KEY,
+          clientId: CLIENT_ID,
+          discoveryDocs: DISCOVERY_DOCS,
+          scope: SCOPES
+        }).then(function () {
+          handleAuthClick();
+          tsvObj.then(res=>{
+            listFiles(res);
+          })
 
-    var sheetJson = [];
+        }).catch(console.log);
 
-    rows.forEach(row=>{
-    	var entry=row.split(/\t/gi);
-    	var rObj={};
+        return allFiles;
+      }
 
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClick(event) {
+        gapi.auth2.getAuthInstance().signIn();
+      }
 
-    	entry.forEach((item, i)=>{
-    		if (item !== ""){
-    			var elem = item.replace(/\n/gi, '');
-    			(elem === "TRUE")? elem = true : null;
-    			(elem === "FALSE")? elem = false : null;
+      /**
+       *  Sign out the user upon button click.
+       */
+      // function handleSignoutClick(event) {
+      //   gapi.auth2.getAuthInstance().signOut();
+      // }
 
-    			(header[i] === 'id')? elem = parseInt(elem) : null;
-    			(header[i] === 'anchor')? elem = elem.split(';').map(each=>+each) : null;
+      /**
+       * Append a pre element to the body containing the given message
+       * as its text node. Used to display the results of the API call.
+       *
+       * @param {string} message Text to be placed in pre element.
+       */
+      function appendPre(message) {
+        var pre = document.getElementById('content');
+        var textContent = document.createTextNode(message + '\n');
+        pre.appendChild(textContent);
+      }
 
+      /**
+       * Print files.
+       */
+      function listFiles(objComp) {
+        var filesFound = gapi.client.drive.files.list({
+          'pageSize': 10,
+          'fields': "nextPageToken, files(id, name)"
+        }).then(function(response) {
 
-    				rObj[header[i]] = elem
+          console.log(objComp);
 
-    			//rObj[header[i]] = elem.replace(/\n/gi, '')
-    		}
-    	})
+          appendPre('Files:');
+          var files = response.result.files;
 
-    	sheetJson.push(rObj);
+          if (files && files.length > 0) {
+            for (var i = 0; i < files.length; i++) {
+              var file = files[i];
+              appendPre(file.name + ' (' + file.id + ')');
+            }
+          } else {
+            appendPre('No files found.');
+          }
+          return files;
+        }).catch(console.log);
+        return filesFound;
+      }
 
-    })
-
-    axios.get(`https://www.googleapis.com/drive/v2/17sThIjpAfMzRjdRcC3lGS1tgVH7JvaI5`)
-    .then(res=>{
-    	console.log(res.data);
-    })
-
-    var img = document.createElement("img");
-    img.src = sheetJson[0].url;
-    document.getElementById('app').append(img);
-
-
-})
+handleClientLoad();

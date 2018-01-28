@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 26);
+/******/ 	return __webpack_require__(__webpack_require__.s = 29);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -380,7 +380,7 @@ module.exports = {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(23);
+var normalizeHeaderName = __webpack_require__(26);
 
 var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 var DEFAULT_CONTENT_TYPE = {
@@ -481,12 +481,12 @@ module.exports = defaults;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(15);
-var buildURL = __webpack_require__(18);
-var parseHeaders = __webpack_require__(24);
-var isURLSameOrigin = __webpack_require__(22);
+var settle = __webpack_require__(18);
+var buildURL = __webpack_require__(21);
+var parseHeaders = __webpack_require__(27);
+var isURLSameOrigin = __webpack_require__(25);
 var createError = __webpack_require__(5);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(17);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(20);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -582,7 +582,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(20);
+      var cookies = __webpack_require__(23);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -703,7 +703,7 @@ module.exports = function isCancel(value) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(14);
+var enhanceError = __webpack_require__(17);
 
 /**
  * Create an Error with the specified message, config, error code, and response.
@@ -930,9 +930,9 @@ process.umask = function() { return 0; };
 
 /***/ }),
 /* 8 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-module.exports = __webpack_require__(9);
+module.exports = {"web":{"client_id":"277663306463-0kno9e8pjtgbb30pkqme2orlisg3kqen.apps.googleusercontent.com","project_id":"civil-honor-135319","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://accounts.google.com/o/oauth2/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"PK3gnUB9XEbhq90GT8mYD-OA","javascript_origins":["http://localhost:3000"],"apikey":"AIzaSyDC2TYN9bC9lPTwBKLU_hBOKMhrDrukN_s"}}
 
 /***/ }),
 /* 9 */
@@ -941,9 +941,327 @@ module.exports = __webpack_require__(9);
 "use strict";
 
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var gapi = window.gapi = window.gapi || {};gapi._bs = new Date().getTime();(function () {
+  /*
+  gapi.loader.OBJECT_CREATE_TEST_OVERRIDE &&*/
+  var g = window,
+      h = document,
+      m = g.location,
+      n = function n() {},
+      q = /\[native code\]/,
+      u = function u(a, b, c) {
+    return a[b] = a[b] || c;
+  },
+      aa = function aa(a) {
+    a = a.sort();for (var b = [], c = void 0, d = 0; d < a.length; d++) {
+      var e = a[d];e != c && b.push(e);c = e;
+    }return b;
+  },
+      w = function w() {
+    var a;if ((a = Object.create) && q.test(a)) a = a(null);else {
+      a = {};for (var b in a) {
+        a[b] = void 0;
+      }
+    }return a;
+  },
+      x = u(g, "gapi", {});var A;A = u(g, "___jsl", w());u(A, "I", 0);u(A, "hel", 10);var B = function B() {
+    var a = m.href;if (A.dpo) var b = A.h;else {
+      b = A.h;var c = /([#].*&|[#])jsh=([^&#]*)/g,
+          d = /([?#].*&|[?#])jsh=([^&#]*)/g;if (a = a && (c.exec(a) || d.exec(a))) try {
+        b = decodeURIComponent(a[2]);
+      } catch (e) {}
+    }return b;
+  },
+      ba = function ba(a) {
+    var b = u(A, "PQ", []);A.PQ = [];var c = b.length;if (0 === c) a();else for (var d = 0, e = function e() {
+      ++d === c && a();
+    }, f = 0; f < c; f++) {
+      b[f](e);
+    }
+  },
+      C = function C(a) {
+    return u(u(A, "H", w()), a, w());
+  };var D = u(A, "perf", w()),
+      F = u(D, "g", w()),
+      ca = u(D, "i", w());u(D, "r", []);w();w();var G = function G(a, b, c) {
+    var d = D.r;"function" === typeof d ? d(a, b, c) : d.push([a, b, c]);
+  },
+      K = function K(a, b, c) {
+    b && 0 < b.length && (b = J(b), c && 0 < c.length && (b += "___" + J(c)), 28 < b.length && (b = b.substr(0, 28) + (b.length - 28)), c = b, b = u(ca, "_p", w()), u(b, c, w())[a] = new Date().getTime(), G(a, "_p", c));
+  },
+      J = function J(a) {
+    return a.join("__").replace(/\./g, "_").replace(/\-/g, "_").replace(/,/g, "_");
+  };var L = w(),
+      M = [],
+      N = function N(a) {
+    throw Error("Bad hint" + (a ? ": " + a : ""));
+  };M.push(["jsl", function (a) {
+    for (var b in a) {
+      if (Object.prototype.hasOwnProperty.call(a, b)) {
+        var c = a[b];"object" == (typeof c === "undefined" ? "undefined" : _typeof(c)) ? A[b] = u(A, b, []).concat(c) : u(A, b, c);
+      }
+    }if (b = a.u) a = u(A, "us", []), a.push(b), (b = /^https:(.*)$/.exec(b)) && a.push("http:" + b[1]);
+  }]);var da = /^(\/[a-zA-Z0-9_\-]+)+$/,
+      O = [/\/amp\//, /\/amp$/, /^\/amp$/],
+      ea = /^[a-zA-Z0-9\-_\.,!]+$/,
+      fa = /^gapi\.loaded_[0-9]+$/,
+      ha = /^[a-zA-Z0-9,._-]+$/,
+      la = function la(a, b, c, d) {
+    var e = a.split(";"),
+        f = e.shift(),
+        l = L[f],
+        k = null;l ? k = l(e, b, c, d) : N("no hint processor for: " + f);k || N("failed to generate load url");b = k;c = b.match(ia);(d = b.match(ja)) && 1 === d.length && ka.test(b) && c && 1 === c.length || N("failed sanity: " + a);return k;
+  },
+      na = function na(a, b, c, d) {
+    a = ma(a);fa.test(c) || N("invalid_callback");b = P(b);d = d && d.length ? P(d) : null;var e = function e(a) {
+      return encodeURIComponent(a).replace(/%2C/g, ",");
+    };return [encodeURIComponent(a.pathPrefix).replace(/%2C/g, ",").replace(/%2F/g, "/"), "/k=", e(a.version), "/m=", e(b), d ? "/exm=" + e(d) : "", "/rt=j/sv=1/d=1/ed=1", a.a ? "/am=" + e(a.a) : "", a.c ? "/rs=" + e(a.c) : "", a.f ? "/t=" + e(a.f) : "", "/cb=", e(c)].join("");
+  },
+      ma = function ma(a) {
+    "/" !== a.charAt(0) && N("relative path");for (var b = a.substring(1).split("/"), c = []; b.length;) {
+      a = b.shift();if (!a.length || 0 == a.indexOf(".")) N("empty/relative directory");else if (0 < a.indexOf("=")) {
+        b.unshift(a);
+        break;
+      }c.push(a);
+    }a = {};for (var d = 0, e = b.length; d < e; ++d) {
+      var f = b[d].split("="),
+          l = decodeURIComponent(f[0]),
+          k = decodeURIComponent(f[1]);2 == f.length && l && k && (a[l] = a[l] || k);
+    }b = "/" + c.join("/");da.test(b) || N("invalid_prefix");c = 0;for (d = O.length; c < d; ++c) {
+      O[c].test(b) && N("invalid_prefix");
+    }c = Q(a, "k", !0);d = Q(a, "am");e = Q(a, "rs");a = Q(a, "t");return { pathPrefix: b, version: c, a: d, c: e, f: a };
+  },
+      P = function P(a) {
+    for (var b = [], c = 0, d = a.length; c < d; ++c) {
+      var e = a[c].replace(/\./g, "_").replace(/-/g, "_");ha.test(e) && b.push(e);
+    }return b.join(",");
+  },
+      Q = function Q(a, b, c) {
+    a = a[b];!a && c && N("missing: " + b);if (a) {
+      if (ea.test(a)) return a;N("invalid: " + b);
+    }return null;
+  },
+      ka = /^https?:\/\/[a-z0-9_.-]+\.google(rs)?\.com(:\d+)?\/[a-zA-Z0-9_.,!=\-\/]+$/,
+      ja = /\/cb=/g,
+      ia = /\/\//g,
+      oa = function oa() {
+    var a = B();if (!a) throw Error("Bad hint");return a;
+  };L.m = function (a, b, c, d) {
+    (a = a[0]) || N("missing_hint");return "https://apis.google.com" + na(a, b, c, d);
+  };var R = decodeURI("%73cript"),
+      S = /^[-+_0-9\/A-Za-z]+={0,2}$/,
+      T = function T(a, b) {
+    for (var c = [], d = 0; d < a.length; ++d) {
+      var e = a[d],
+          f;if (f = e) {
+        a: {
+          for (f = 0; f < b.length; f++) {
+            if (b[f] === e) break a;
+          }f = -1;
+        }f = 0 > f;
+      }f && c.push(e);
+    }return c;
+  },
+      U = function U() {
+    var a = A.nonce;if (void 0 !== a) return a && a === String(a) && a.match(S) ? a : A.nonce = null;var b = u(A, "us", []);if (!b || !b.length) return A.nonce = null;for (var c = h.getElementsByTagName(R), d = 0, e = c.length; d < e; ++d) {
+      var f = c[d];if (f.src && (a = String(f.nonce || f.getAttribute("nonce") || "") || null)) {
+        for (var l = 0, k = b.length; l < k && b[l] !== f.src; ++l) {}if (l !== k && a && a === String(a) && a.match(S)) return A.nonce = a;
+      }
+    }return null;
+  },
+      pa = function pa(a) {
+    if ("loading" != h.readyState) V(a);else {
+      var b = U(),
+          c = "";null !== b && (c = ' nonce="' + b + '"');h.write("<" + R + ' src="' + encodeURI(a) + '"' + c + "></" + R + ">");
+    }
+  },
+      V = function V(a) {
+    var b = h.createElement(R);b.setAttribute("src", a);a = U();null !== a && b.setAttribute("nonce", a);b.async = "true";(a = h.getElementsByTagName(R)[0]) ? a.parentNode.insertBefore(b, a) : (h.head || h.body || h.documentElement).appendChild(b);
+  },
+      qa = function qa(a, b) {
+    var c = b && b._c;if (c) for (var d = 0; d < M.length; d++) {
+      var e = M[d][0],
+          f = M[d][1];f && Object.prototype.hasOwnProperty.call(c, e) && f(c[e], a, b);
+    }
+  },
+      ra = function ra(a, b, c) {
+    X(function () {
+      var c = b === B() ? u(x, "_", w()) : w();c = u(C(b), "_", c);a(c);
+    }, c);
+  },
+      Z = function Z(a, b) {
+    var c = b || {};"function" == typeof b && (c = {}, c.callback = b);qa(a, c);b = a ? a.split(":") : [];var d = c.h || oa(),
+        e = u(A, "ah", w());if (e["::"] && b.length) {
+      a = [];for (var f = null; f = b.shift();) {
+        var l = f.split(".");l = e[f] || e[l[1] && "ns:" + l[0] || ""] || d;var k = a.length && a[a.length - 1] || null,
+            v = k;k && k.hint == l || (v = { hint: l, b: [] }, a.push(v));v.b.push(f);
+      }var y = a.length;if (1 < y) {
+        var z = c.callback;z && (c.callback = function () {
+          0 == --y && z();
+        });
+      }for (; b = a.shift();) {
+        Y(b.b, c, b.hint);
+      }
+    } else Y(b || [], c, d);
+  },
+      Y = function Y(a, b, c) {
+    a = aa(a) || [];var d = b.callback,
+        e = b.config,
+        f = b.timeout,
+        l = b.ontimeout,
+        k = b.onerror,
+        v = void 0;"function" == typeof k && (v = k);var y = null,
+        z = !1;if (f && !l || !f && l) throw "Timeout requires both the timeout parameter and ontimeout parameter to be set";k = u(C(c), "r", []).sort();var H = u(C(c), "L", []).sort(),
+        E = [].concat(k),
+        W = function W(a, b) {
+      if (z) return 0;g.clearTimeout(y);H.push.apply(H, p);var d = ((x || {}).config || {}).update;d ? d(e) : e && u(A, "cu", []).push(e);if (b) {
+        K("me0", a, E);try {
+          ra(b, c, v);
+        } finally {
+          K("me1", a, E);
+        }
+      }return 1;
+    };0 < f && (y = g.setTimeout(function () {
+      z = !0;l();
+    }, f));var p = T(a, H);if (p.length) {
+      p = T(a, k);var r = u(A, "CP", []),
+          t = r.length;r[t] = function (a) {
+        if (!a) return 0;K("ml1", p, E);var b = function b(_b) {
+          r[t] = null;W(p, a) && ba(function () {
+            d && d();_b();
+          });
+        },
+            c = function c() {
+          var a = r[t + 1];a && a();
+        };0 < t && r[t - 1] ? r[t] = function () {
+          b(c);
+        } : b(c);
+      };if (p.length) {
+        var I = "loaded_" + A.I++;x[I] = function (a) {
+          r[t](a);x[I] = null;
+        };a = la(c, p, "gapi." + I, k);k.push.apply(k, p);K("ml0", p, E);b.sync || g.___gapisync ? pa(a) : V(a);
+      } else r[t](n);
+    } else W(p) && d && d();
+  };var X = function X(a, b) {
+    if (A.hee && 0 < A.hel) try {
+      return a();
+    } catch (c) {
+      b && b(c), A.hel--, Z("debug_error", function () {
+        try {
+          window.___jsl.hefn(c);
+        } catch (d) {
+          throw c;
+        }
+      });
+    } else try {
+      return a();
+    } catch (c) {
+      throw b && b(c), c;
+    }
+  };x.load = function (a, b) {
+    return X(function () {
+      return Z(a, b);
+    });
+  };F.bs0 = window.gapi._bs || new Date().getTime();G("bs0");F.bs1 = new Date().getTime();G("bs1");delete window.gapi._bs;
+}).call(undefined);
+gapi.load("", { callback: window["gapi_onload"], _c: { "jsl": { "ci": { "deviceType": "desktop", "oauth-flow": { "authUrl": "https://accounts.google.com/o/oauth2/auth", "proxyUrl": "https://accounts.google.com/o/oauth2/postmessageRelay", "disableOpt": true, "idpIframeUrl": "https://accounts.google.com/o/oauth2/iframe", "usegapi": false }, "debug": { "reportExceptionRate": 0.05, "forceIm": false, "rethrowException": false, "host": "https://apis.google.com" }, "enableMultilogin": true, "googleapis.config": { "auth": { "useFirstPartyAuthV2": true } }, "isPlusUser": true, "inline": { "css": 1 }, "disableRealtimeCallback": false, "drive_share": { "skipInitCommand": true }, "csi": { "rate": 0.01 }, "client": { "cors": false }, "isLoggedIn": true, "signInDeprecation": { "rate": 0.0 }, "include_granted_scopes": true, "llang": "en", "iframes": { "ytsubscribe": { "url": "https://www.youtube.com/subscribe_embed?usegapi=1" }, "plus_share": { "params": { "url": "" }, "url": ":socialhost:/:session_prefix::se:_/+1/sharebutton?plusShare=true&usegapi=1" }, ":source:": "3p", "playemm": { "url": "https://play.google.com/work/embedded/search?usegapi=1&usegapi=1" }, "partnersbadge": { "url": "https://www.gstatic.com/partners/badge/templates/badge.html?usegapi=1" }, "dataconnector": { "url": "https://dataconnector.corp.google.com/:session_prefix:ui/widgetview?usegapi=1" }, "shortlists": { "url": "" }, "plus_followers": { "params": { "url": "" }, "url": ":socialhost:/_/im/_/widget/render/plus/followers?usegapi=1" }, "post": { "params": { "url": "" }, "url": ":socialhost:/:session_prefix::im_prefix:_/widget/render/post?usegapi=1" }, "signin": { "params": { "url": "" }, "url": ":socialhost:/:session_prefix:_/widget/render/signin?usegapi=1", "methods": ["onauth"] }, "donation": { "url": "https://onetoday.google.com/home/donationWidget?usegapi=1" }, "plusone": { "params": { "count": "", "size": "", "url": "" }, "url": ":socialhost:/:session_prefix::se:_/+1/fastbutton?usegapi=1" }, ":im_socialhost:": "https://plus.googleapis.com", "backdrop": { "url": "https://clients3.google.com/cast/chromecast/home/widget/backdrop?usegapi=1" }, "visibility": { "params": { "url": "" }, "url": ":socialhost:/:session_prefix:_/widget/render/visibility?usegapi=1" }, "additnow": { "url": "https://apis.google.com/additnow/additnow.html?usegapi=1", "methods": ["launchurl"] }, ":signuphost:": "https://plus.google.com", "community": { "url": ":ctx_socialhost:/:session_prefix::im_prefix:_/widget/render/community?usegapi=1" }, "plus": { "url": ":socialhost:/:session_prefix:_/widget/render/badge?usegapi=1" }, "commentcount": { "url": ":socialhost:/:session_prefix:_/widget/render/commentcount?usegapi=1" }, "zoomableimage": { "url": "https://ssl.gstatic.com/microscope/embed/" }, "appfinder": { "url": "https://gsuite.google.com/:session_prefix:marketplace/appfinder?usegapi=1" }, "person": { "url": ":socialhost:/:session_prefix:_/widget/render/person?usegapi=1" }, "savetodrive": { "url": "https://drive.google.com/savetodrivebutton?usegapi=1", "methods": ["save"] }, "page": { "url": ":socialhost:/:session_prefix:_/widget/render/page?usegapi=1" }, "card": { "url": ":socialhost:/:session_prefix:_/hovercard/card" }, "youtube": { "params": { "location": ["search", "hash"] }, "url": ":socialhost:/:session_prefix:_/widget/render/youtube?usegapi=1", "methods": ["scroll", "openwindow"] }, "plus_circle": { "params": { "url": "" }, "url": ":socialhost:/:session_prefix::se:_/widget/plus/circle?usegapi=1" }, "rbr_s": { "params": { "url": "" }, "url": ":socialhost:/:session_prefix::se:_/widget/render/recobarsimplescroller" }, "udc_webconsentflow": { "params": { "url": "" }, "url": "https://myaccount.google.com/webconsent?usegapi=1" }, "savetoandroidpay": { "url": "https://androidpay.google.com/a/widget/save" }, "blogger": { "params": { "location": ["search", "hash"] }, "url": ":socialhost:/:session_prefix:_/widget/render/blogger?usegapi=1", "methods": ["scroll", "openwindow"] }, "evwidget": { "params": { "url": "" }, "url": ":socialhost:/:session_prefix:_/events/widget?usegapi=1" }, "surveyoptin": { "url": "https://www.google.com/shopping/customerreviews/optin?usegapi=1" }, ":socialhost:": "https://apis.google.com", "hangout": { "url": "https://talkgadget.google.com/:session_prefix:talkgadget/_/widget" }, ":gplus_url:": "https://plus.google.com", "rbr_i": { "params": { "url": "" }, "url": ":socialhost:/:session_prefix::se:_/widget/render/recobarinvitation" }, "share": { "url": ":socialhost:/:session_prefix::im_prefix:_/widget/render/share?usegapi=1" }, "comments": { "params": { "location": ["search", "hash"] }, "url": ":socialhost:/:session_prefix:_/widget/render/comments?usegapi=1", "methods": ["scroll", "openwindow"] }, "autocomplete": { "params": { "url": "" }, "url": ":socialhost:/:session_prefix:_/widget/render/autocomplete" }, "ratingbadge": { "url": "https://www.google.com/shopping/customerreviews/badge?usegapi=1" }, "appcirclepicker": { "url": ":socialhost:/:session_prefix:_/widget/render/appcirclepicker" }, "follow": { "url": ":socialhost:/:session_prefix:_/widget/render/follow?usegapi=1" }, "sharetoclassroom": { "url": "https://www.gstatic.com/classroom/sharewidget/widget_stable.html?usegapi=1" }, "ytshare": { "params": { "url": "" }, "url": ":socialhost:/:session_prefix:_/widget/render/ytshare?usegapi=1" }, "family_creation": { "params": { "url": "" }, "url": "https://families.google.com/webcreation?usegapi=1&usegapi=1" }, "configurator": { "url": ":socialhost:/:session_prefix:_/plusbuttonconfigurator?usegapi=1" }, "savetowallet": { "url": "https://androidpay.google.com/a/widget/save" } } }, "h": "m;/_/scs/apps-static/_/js/k=oz.gapi.en.rH_DNAowp7o.O/m=__features__/am=AQ/rt=j/d=1/rs=AGLTcCPjBnH1F4aCnBCh3-1YeKgkbV6kbg", "u": "https://apis.google.com/js/api.js", "hee": true, "fp": "283fd1cc934169a06078f4520c79baac1423787a", "dpo": false }, "fp": "283fd1cc934169a06078f4520c79baac1423787a", "annotation": ["interactivepost", "recobar", "signin2", "autocomplete", "profile"], "bimodal": ["signin", "share"] } });
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+            value: true
+});
+
+var _axios = __webpack_require__(11);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import load from './quickstart.js';
+
+
+var sheetlink = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vReeXJJvN0cVl9WtRiJZGOM7Cy1ATJ0k2nvE3aXBjKdBn4y40eGE1qtlMlX43F8gWN7WgLQR3xmDWTp/pub?output=tsv';
+
+var tsvObj = _axios2.default.get(sheetlink).then(function (res) {
+
+            var rows = res.data.split('\r');
+            var headerRow = rows.shift(),
+                header = headerRow.split(/\t/gi);
+
+            console.log(headerRow);
+
+            var sheetJson = [];
+
+            rows.forEach(function (row) {
+                        var entry = row.split(/\t/gi);
+                        var rObj = {};
+
+                        entry.forEach(function (item, i) {
+                                    // if (item !== ""){
+                                    var elem = item.replace(/\n/gi, '');
+                                    elem === "TRUE" ? elem = true : null;
+                                    elem === "FALSE" ? elem = false : null;
+                                    elem.length === 0 ? elem = null : null;
+                                    header[i] === 'id' ? elem = parseInt(elem) : null;
+                                    header[i] === 'draworder' ? elem = parseInt(elem) : null;
+                                    //(header[i] === 'anchor')? elem = elem.split(';').map(each=>+each) : null;
+
+
+                                    rObj[header[i]] = elem;
+
+                                    //rObj[header[i]] = elem.replace(/\n/gi, '')
+                                    //}
+                        });
+
+                        sheetJson.push(rObj);
+            });
+
+            //console.log(sheetJson); //once we have the sheet as json.... need to order objects and then assemble from contents
+
+            return sort(sheetJson);
+
+            // axios.get(`https://www.googleapis.com/drive/v2/17sThIjpAfMzRjdRcC3lGS1tgVH7JvaI5`)
+            // .then(res=>{
+            // 	console.log(res.data);
+            // })
+
+            // var img = document.createElement("img");
+            // img.src = sheetJson[0].url;
+            // document.getElementById('app').append(img);
+
+}).catch(console.log);
+
+function sort(rowsJson) {
+
+            return rowsJson;
+}
+
+exports.default = tsvObj;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(12);
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(6);
-var Axios = __webpack_require__(11);
+var Axios = __webpack_require__(14);
 var defaults = __webpack_require__(1);
 
 /**
@@ -978,14 +1296,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(3);
-axios.CancelToken = __webpack_require__(10);
+axios.CancelToken = __webpack_require__(13);
 axios.isCancel = __webpack_require__(4);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(25);
+axios.spread = __webpack_require__(28);
 
 module.exports = axios;
 
@@ -994,7 +1312,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 10 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1058,7 +1376,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 11 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1066,10 +1384,10 @@ module.exports = CancelToken;
 
 var defaults = __webpack_require__(1);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(12);
-var dispatchRequest = __webpack_require__(13);
-var isAbsoluteURL = __webpack_require__(21);
-var combineURLs = __webpack_require__(19);
+var InterceptorManager = __webpack_require__(15);
+var dispatchRequest = __webpack_require__(16);
+var isAbsoluteURL = __webpack_require__(24);
+var combineURLs = __webpack_require__(22);
 
 /**
  * Create a new instance of Axios
@@ -1150,7 +1468,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 12 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1209,14 +1527,14 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 13 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(16);
+var transformData = __webpack_require__(19);
 var isCancel = __webpack_require__(4);
 var defaults = __webpack_require__(1);
 
@@ -1295,7 +1613,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 14 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1321,7 +1639,7 @@ module.exports = function enhanceError(error, config, code, response) {
 
 
 /***/ }),
-/* 15 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1353,7 +1671,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 16 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1380,7 +1698,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 17 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1423,7 +1741,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 18 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1498,7 +1816,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 19 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1517,7 +1835,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 20 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1577,7 +1895,7 @@ module.exports = (
 
 
 /***/ }),
-/* 21 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1598,7 +1916,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 22 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1673,7 +1991,7 @@ module.exports = (
 
 
 /***/ }),
-/* 23 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1692,7 +2010,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 24 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1736,7 +2054,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 25 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1770,62 +2088,115 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 26 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _axios = __webpack_require__(8);
+var _client_secret_old = __webpack_require__(8);
 
-var _axios2 = _interopRequireDefault(_axios);
+var _client_secret_old2 = _interopRequireDefault(_client_secret_old);
+
+__webpack_require__(9);
+
+var _publicTempReader = __webpack_require__(10);
+
+var _publicTempReader2 = _interopRequireDefault(_publicTempReader);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var sheetlink = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vReeXJJvN0cVl9WtRiJZGOM7Cy1ATJ0k2nvE3aXBjKdBn4y40eGE1qtlMlX43F8gWN7WgLQR3xmDWTp/pub?output=tsv';
+var CLIENT_ID = _client_secret_old2.default.web.client_id;
+var API_KEY = _client_secret_old2.default.web.apikey;
+var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
 
-_axios2.default.get(sheetlink).then(function (res) {
+var SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
 
-   var rows = res.data.split('\r');
-   var headerRow = rows.shift(),
-       header = headerRow.split(/\t/gi);
+// var authorizeButton = document.getElementById('authorize-button');
+// var signoutButton = document.getElementById('signout-button');
 
-   console.log(rows);
+/**
+ *  On load, called to load the auth2 library and API client library.
+ */
+function handleClientLoad() {
 
-   var sheetJson = [];
+  gapi.load('client:auth2', initClient);
+}
 
-   rows.forEach(function (row) {
-      var entry = row.split(/\t/gi);
-      var rObj = {};
+/**
+ *  Initializes the API client library and sets up sign-in state
+ *  listeners.
+ */
+function initClient() {
+  var allFiles = gapi.client.init({
+    apiKey: API_KEY,
+    clientId: CLIENT_ID,
+    discoveryDocs: DISCOVERY_DOCS,
+    scope: SCOPES
+  }).then(function () {
+    handleAuthClick();
+    _publicTempReader2.default.then(function (res) {
+      listFiles(res);
+    });
+  }).catch(console.log);
 
-      entry.forEach(function (item, i) {
-         if (item !== "") {
-            var elem = item.replace(/\n/gi, '');
-            elem === "TRUE" ? elem = true : null;
-            elem === "FALSE" ? elem = false : null;
+  return allFiles;
+}
 
-            header[i] === 'id' ? elem = parseInt(elem) : null;
-            header[i] === 'anchor' ? elem = elem.split(';').map(function (each) {
-               return +each;
-            }) : null;
+/**
+ *  Sign in the user upon button click.
+ */
+function handleAuthClick(event) {
+  gapi.auth2.getAuthInstance().signIn();
+}
 
-            rObj[header[i]] = elem;
+/**
+ *  Sign out the user upon button click.
+ */
+// function handleSignoutClick(event) {
+//   gapi.auth2.getAuthInstance().signOut();
+// }
 
-            //rObj[header[i]] = elem.replace(/\n/gi, '')
-         }
-      });
+/**
+ * Append a pre element to the body containing the given message
+ * as its text node. Used to display the results of the API call.
+ *
+ * @param {string} message Text to be placed in pre element.
+ */
+function appendPre(message) {
+  var pre = document.getElementById('content');
+  var textContent = document.createTextNode(message + '\n');
+  pre.appendChild(textContent);
+}
 
-      sheetJson.push(rObj);
-   });
+/**
+ * Print files.
+ */
+function listFiles(objComp) {
+  var filesFound = gapi.client.drive.files.list({
+    'pageSize': 10,
+    'fields': "nextPageToken, files(id, name)"
+  }).then(function (response) {
 
-   _axios2.default.get('https://www.googleapis.com/drive/v2/17sThIjpAfMzRjdRcC3lGS1tgVH7JvaI5').then(function (res) {
-      console.log(res.data);
-   });
+    console.log(objComp);
 
-   var img = document.createElement("img");
-   img.src = sheetJson[0].url;
-   document.getElementById('app').append(img);
-});
+    appendPre('Files:');
+    var files = response.result.files;
+
+    if (files && files.length > 0) {
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        appendPre(file.name + ' (' + file.id + ')');
+      }
+    } else {
+      appendPre('No files found.');
+    }
+    return files;
+  }).catch(console.log);
+  return filesFound;
+}
+
+handleClientLoad();
 
 /***/ })
 /******/ ]);
