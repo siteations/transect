@@ -13,21 +13,31 @@
 
     <!-- Bootstrap core CSS ... pull in via npm-->
     <!--<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
-    <!--<link href="/stylesheets/style.css" rel="stylesheet">-->
+    <LINK rel="stylesheet" href="./css/styles.css" type="text/css">
     <!-- see CSS for font licenses -->
 
 
   </head>
 
   <body>
-    <button id="authorize-button" style="display: none;">Authorize</button>
-    <button id="signout-button" style="display: none;">Sign Out</button>
-    <div id="content"></div>
+    <div id="formlink" class="test">
+        <form>
+            Public Google Spreadsheet:<br>
+              <input type="text" id="sheet" style="width:80%; height: 5vh;" ><br>
+              <input id="submit" type="button" value="Click to Enter Link">
+        <form>
+
+    </div>
+    <div id="content">
+        <img id="background" src="" class="slide bw hidden" />
+        <img id="overlay" src="" class="slide hidden" />
+        <h3 id="title" class="slidetitle">test</h3>
+
+    </div>
 
     <!-- core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script defer src="./js/bundle.js"></script>
+   <script defer src="./js/bundle.js"></script>
 
   </body>
 </html>

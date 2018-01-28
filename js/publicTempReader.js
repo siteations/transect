@@ -1,16 +1,17 @@
 import axios from 'axios';
 
-//location of public sheets: add by form in variation
-const sheetlink = `https://docs.google.com/spreadsheets/d/e/2PACX-1vReeXJJvN0cVl9WtRiJZGOM7Cy1ATJ0k2nvE3aXBjKdBn4y40eGE1qtlMlX43F8gWN7WgLQR3xmDWTp/pub?output=tsv`;
 
-const tsvObj = axios.get(sheetlink)
+//-----------------------------------------GRAB FROM PUBLIC SPREADSHEET-----------------------------------------------
+
+export function tsvObj(sheetlink){
+    var rows = axios.get(sheetlink)
 	.then(res => {
 
 
     var rows =res.data.split('\r');
     var headerRow = rows.shift(), header = headerRow.split(/\t/gi);
 
-    console.log(headerRow);
+    //console.log(headerRow);
 
     var sheetJson = [];
 
@@ -28,8 +29,6 @@ const tsvObj = axios.get(sheetlink)
     			(header[i] === 'id')? elem = parseInt(elem) : null;
                 (header[i] === 'draworder')? elem = parseInt(elem) : null;
     			//(header[i] === 'anchor')? elem = elem.split(';').map(each=>+each) : null;
-
-
     				rObj[header[i]] = elem
 
     	})
@@ -38,12 +37,13 @@ const tsvObj = axios.get(sheetlink)
 
     })
 
-    //console.log(sheetJson); //once we have the sheet as json.... need to order objects and then assemble from contents
-
     return sheetJson;
 
 }).catch(console.log);
+ return rows;
+}
 
+//-----------------------------------------SORT STRUCTURE FROM TSV TO HIERARCH. JSON-----------------------------------------------
 
 export function sort(rowsJson){
     var slides=[];
@@ -139,4 +139,43 @@ export function sort(rowsJson){
     return slides;
 }
 
-export default tsvObj;
+//-----------------------------------------SWAP WEB ADDESSES for Names-----------------------------------------------
+
+export function swap (file, link, rows){
+        var rowsRev = rows.map(row=>{
+          if (file.name === row.src){
+            row.src = link;
+          } else if (file.name === row.paneimageurl){
+            row.paneimageurl = link;
+          }
+          return row;
+        })
+        return rowsRev;
+      }
+
+
+//-----------------------------------------SWAP WEB ADDESSES for Names-----------------------------------------------
+
+export function display (objs){
+    console.log(objs);
+
+    var slideIndex = 0, internalIndex=0;
+
+    var current = objs[slideIndex];
+
+    var img = document.getElementById('background');
+        img.src=current.background;
+        img.className="slide bw";
+
+
+    var title = document.getElementById('title');
+        title.innerHTML=current.title;
+        console.dir(title);
+
+
+
+
+
+
+
+}

@@ -1,0 +1,35 @@
+.hidden {
+	visibility: hidden;
+}
+
+.bw {
+	background-color: #ffffff;
+}
+
+.slide {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -10;
+}
+
+.overlay {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -5;
+}
+
+.off {
+	display: none;
+}
+
+.slidetitle {
+	z-index:10;
+	color: black;
+	visibility: visible;
+	padding-left: 40px;
+	font-size: 2rem;
+}
