@@ -1,3 +1,57 @@
+@font-face {font-family: 'Texta';font-weight: bold;font-style: italic;src: url('./webfonts/35ABAF_0_0.eot');src: url('./webfonts/35ABAF_0_0.eot?#iefix') format('embedded-opentype'),url('./webfonts/35ABAF_0_0.woff2') format('woff2'),url('./webfonts/35ABAF_0_0.woff') format('woff'),url('./webfonts/35ABAF_0_0.ttf') format('truetype');}
+
+
+@font-face {font-family: 'Texta';font-weight: normal;font-style: italic;src: url('./webfonts/35ABAF_1_0.eot');src: url('./webfonts/35ABAF_1_0.eot?#iefix') format('embedded-opentype'),url('./webfonts/35ABAF_1_0.woff2') format('woff2'),url('./webfonts/35ABAF_1_0.woff') format('woff'),url('./webfonts/35ABAF_1_0.ttf') format('truetype');}
+
+
+@font-face {font-family: 'TrendHandMade';font-weight: normal;font-style: normal;src: url('./webfonts/35ABAF_2_0.eot');src: url('./webfonts/35ABAF_2_0.eot?#iefix') format('embedded-opentype'),url('./webfonts/35ABAF_2_0.woff2') format('woff2'),url('./webfonts/35ABAF_2_0.woff') format('woff'),url('./webfonts/35ABAF_2_0.ttf') format('truetype');}
+
+
+@font-face {font-family: 'TrendHandMade';font-weight: bold;font-style: normal;src: url('./webfonts/35ABAF_3_0.eot');src: url('./webfonts/35ABAF_3_0.eot?#iefix') format('embedded-opentype'),url('./webfonts/35ABAF_3_0.woff2') format('woff2'),url('./webfonts/35ABAF_3_0.woff') format('woff'),url('./webfonts/35ABAF_3_0.ttf') format('truetype');}
+
+
+@font-face {font-family: 'Texta';font-weight: bold;font-style: normal;src: url('./webfonts/35ABAF_4_0.eot');src: url('./webfonts/35ABAF_4_0.eot?#iefix') format('embedded-opentype'),url('./webfonts/35ABAF_4_0.woff2') format('woff2'),url('./webfonts/35ABAF_4_0.woff') format('woff'),url('./webfonts/35ABAF_4_0.ttf') format('truetype');}
+
+
+@font-face {font-family: 'Texta';font-weight: normal;font-style: normal;src: url('./webfonts/35ABAF_5_0.eot');src: url('./webfonts/35ABAF_5_0.eot?#iefix') format('embedded-opentype'),url('./webfonts/35ABAF_5_0.woff2') format('woff2'),url('./webfonts/35ABAF_5_0.woff') format('woff'),url('./webfonts/35ABAF_5_0.ttf') format('truetype');}
+
+p, span {
+	font-family: 'Texta';
+}
+
+h1,h2,h3 {
+	font-family: 'TrendHandMade';
+	font-weight: bold;
+}
+
+h4,h5 {
+	font-family: 'TrendHandMade';
+	font-weight: normal;
+}
+
+#paneUnder {
+	width:25%;
+	height:70vh;
+	position:fixed;
+	top:15vh;
+	left:70%;
+	border-radius: 10px;
+	background-color: #ffffff;
+	opacity: .85;
+	box-shadow: 0px 0px 10px #757575;
+}
+
+#pane {
+	width:25%;
+	height:70vh;
+	position:fixed;
+	top:15vh;
+	left:70%;
+	border-radius: 10px;
+	overflow-y: auto;
+	overflow-x:hidden;
+}
+
 .hidden {
 	visibility: hidden;
 }
@@ -32,4 +86,24 @@
 	visibility: visible;
 	padding-left: 40px;
 	font-size: 2rem;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+
+.dotsAll {
+	z-index:10;
+	padding-left: 40px;
+}
+
+.dots {
+		margin-right: 6px;
+	  margin-left: 6px;
+    padding-left: 10px;
+    border: 1px solid black;
+    width: 12px;
+    border-radius: 2px;
+}
+
+.dots:hover, active {
+	  background-color: grey;
 }

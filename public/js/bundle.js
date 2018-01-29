@@ -1343,15 +1343,121 @@ function display(objs) {
     var slideIndex = 0,
         internalIndex = 0;
 
-    var current = objs[slideIndex];
+    var dots = [];
+    objs.forEach(function (series, i) {
+        var arr = [[i, 0]];
+        var adds = series.additions.length;
+        for (var j = 1; j < adds; j++) {
+            arr.push([i, j]);
+        }
+        dots = dots.concat(arr);
+    });
+    var nav = document.getElementById('switch');
 
-    var img = document.getElementById('background');
-    img.src = current.background;
-    img.className = "slide bw";
+    dots.forEach(function (dot) {
+        var dSpan = document.createElement('span');
+        dSpan.value = dot[0];
+        dSpan.data = dot[1];
+        dSpan.className = 'dots';
+        dSpan.onclick = function (e) {
+            e.preventDefault();
+            var val = e.target.value;
+            var val2 = e.target.data;
+            update(val, val2);
+        };
 
-    var title = document.getElementById('title');
-    title.innerHTML = current.title;
-    console.dir(title);
+        nav.append(dSpan);
+    });
+    var note = document.createElement('span');
+    note.innerHTML = ' click boxes to advance, mouse-over title for overlays';
+    nav.append(note);
+
+    update();
+
+    console.dir(dots);
+
+    var main = document.getElementById('title');
+
+    main.onclick = function (e) {
+        e.preventDefault();
+        update();
+    };
+
+    function update(a, b) {
+        if (slideIndex > objs.length - 1) {
+            slideIndex = 0, internalIndex = 0;
+        }
+        if (a >= 0 && b >= 0) {
+            slideIndex = a, internalIndex = b;
+        }
+
+        console.log(slideIndex, internalIndex);
+
+        var current = objs[slideIndex];
+
+        var img = document.getElementById('background');
+        img.src = current.background;
+        img.className = "slide bw";
+
+        var title = document.getElementById('title');
+        title.innerHTML = current.title;
+        console.dir(title);
+
+        if (current.additions.length > 0 && internalIndex <= current.additions.length - 1) {
+            var subslide = current.additions[internalIndex];
+
+            if (subslide.pane && subslide.pane.length > 0) {
+                var pane = document.getElementById('paneUnder');
+                pane.className = "";
+
+                var panel = document.getElementById('pane');
+                panel.className = "";
+            } else {
+                var pane = document.getElementById('paneUnder');
+                pane.className = "hidden";
+
+                var panel = document.getElementById('pane');
+                panel.className = "hidden";
+
+                //pane.className="hidden";
+            }
+
+            if (subslide.overlay) {
+                var over = document.getElementById('overlay');
+                over.src = subslide.overlay;
+                over.className = "slide";
+            } else {
+                var over = document.getElementById('overlay');
+                over.className = "slide hidden";
+            }
+
+            if (subslide.newTitle) {
+                var title2 = document.getElementById('title');
+                title2.innerHTML = subslide.newTitle;
+            }
+
+            if (subslide.tooltip) {
+                //seriously is this a fade on, fade off section
+            }
+
+            internalIndex++;
+        } else {
+            var pane = document.getElementById('paneUnder');
+            pane.className = "hidden";
+
+            var panel = document.getElementById('pane');
+            panel.className = "hidden";
+
+            var over = document.getElementById('overlay');
+            over.className = "slide hidden";
+
+            internalIndex = 0;
+            slideIndex++;
+        }
+
+        //console.log(slideIndex, internalIndex);
+    } //update done
+
 }
 
 /***/ }),
