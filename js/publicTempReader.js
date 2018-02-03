@@ -51,7 +51,7 @@ export function sort(rowsJson){
     var obj = {};
 
     rowsJson.forEach(row=>{
-        if (row.type==='base' && row.subtype==='background'){
+        if (row.type==='base' && row.subtype==='background' && row.active){
             obj = {
                 slideSeries: base,
                 background: row.src,
@@ -65,7 +65,7 @@ export function sort(rowsJson){
             intern = slides.length-1;
         }
 
-        if (row.type==='add' && row.subtype==='overlay'){
+        if (row.type==='add' && row.subtype==='overlay' && row.active){
             var obj = slides[intern]; //current object
             obj.additions.push({
                 overlay: row.src,
@@ -77,12 +77,13 @@ export function sort(rowsJson){
 
         }
 
-        if (row.type==='add' && row.subtype==='pane'){
+        if (row.type==='add' && row.subtype==='pane' && row.active){
             var obj = slides[intern]; //current object
             if (obj.additions.length > 0 &&  obj.additions[obj.additions.length-1].pane===null){ // no current additions, just add overlay pane
                 obj.additions[obj.additions.length-1].pane = [{
                             type: row.panetype,
                             title: row.panetitle,
+                            subtitle: row.panesubtitle,
                             src: row.paneimageurl,
                             caption: row.panecaption,
                             source: row.panesource,
@@ -96,6 +97,7 @@ export function sort(rowsJson){
                         pane: [{
                             type: row.panetype,
                             title: row.panetitle,
+                            subtitle: row.panesubtitle,
                             src: row.paneimageurl,
                             caption: row.panecaption,
                             source: row.panesource,
@@ -107,6 +109,7 @@ export function sort(rowsJson){
                 obj.additions[obj.additions.length-1].pane. push({
                             type: row.panetype,
                             title: row.panetitle,
+                            subtitle: row.panesubtitle,
                             src: row.paneimageurl,
                             caption: row.panecaption,
                             source: row.panesource,
@@ -116,7 +119,7 @@ export function sort(rowsJson){
 
         }; //panes checked
 
-        if (row.type==='add' && row.subtype==='tooltip'){
+        if (row.type==='add' && row.subtype==='tooltip' && row.active){
             //console.log(row, slides)
             var obj = slides[intern]; //current object
             if (obj.additions.length > 0 &&  obj.additions[obj.additions.length-1].tooltip===null) { // no current additions, just add overlay pane
@@ -188,7 +191,7 @@ export function display (objs){
         nav.append(dSpan);
     })
     var note = document.createElement('span');
-    note.innerHTML = ' click boxes to advance, mouse-over title for overlays';
+    note.innerHTML = ' click box to advance slides, touch title or panel for more info';
     nav.append(note);
 
     update();
@@ -203,6 +206,86 @@ export function display (objs){
   };
 
 
+function list(text){
+    var arr=text.split('.');
+    var ul = document.createElement('ul');
+
+    arr.forEach(item=>{
+        if (item !== ''){
+            var li = document.createElement('li');
+            li.innerHTML=item;
+            ul.append(li);
+        }
+    });
+
+    return ul;
+}
+
+function para(text, po){
+
+    var arr=text.split('|');
+    console.log('text at split', arr);
+
+    arr.forEach((item)=>{
+        var p = document.createElement('p');
+        p.innerHTML=item;
+
+        po.append(p);
+
+    });
+}
+
+
+function paneload(subslide){
+
+    var values = Object.keys(subslide);
+    var type = subslide.type;
+
+
+    values.forEach(value=>{
+        var contents = subslide[value];
+
+        var element = document.getElementById('pane-'+value);
+        if (value !== 'type' && value !== 'src' && value !=='text' && contents){
+            element.innerHTML=contents;
+        } else if (value === 'src' && contents) {
+            element.src = contents;
+        } else if (value === 'text' ){
+            console.log(type, value, contents);
+            element.innerHTML= '';
+            if (type==='a'&& contents){
+                para(contents, element); //div
+            } else if (type==='b'&& contents){
+                element.append(list(contents));
+            }
+
+        } else if (!contents && value === 'src'){
+            element.src = '';
+        } else if (!contents && value !== 'type' && value !== 'src' && value !=='text' ){
+            element.innerHTML = '';
+        }
+
+    })
+
+    var div = document.getElementById('a');
+    div.className="";
+
+    console.log(subslide);
+
+
+}
+
+function paneclear(){
+
+    var div = document.getElementById('a');
+    div.className="hidden";
+
+    console.log('clear pane');
+
+
+}
+
+
 function update(a,b){
     if (slideIndex>objs.length-1){
         slideIndex=0, internalIndex=0;
@@ -215,9 +298,27 @@ function update(a,b){
 
     var current = objs[slideIndex];
 
-    var img = document.getElementById('background');
-        img.src=current.background;
-        img.className="slide bw";
+    var img = document.getElementsByClassName('slide');
+    var arr = Array.from(img);
+    var edit = arr.filter(each=>each.id==='background')
+    edit.forEach((item,i)=>{
+        if (i<edit.length-1){
+            item.remove();
+        }
+    });
+    console.log(edit);
+
+    //img.remove();
+    var img2 = document.createElement('img');
+        img2.id='background';
+        img2.className="slide bw fadebk";
+        img2.src=current.background;
+        img2.onload = (e) => {
+                img2.style.opacity=1;
+                console.log('loaded bk');
+                };
+    var node = document.getElementById('content');
+    node.append(img2);
 
 
     var title = document.getElementById('title');
@@ -230,10 +331,12 @@ function update(a,b){
 
         if (subslide.pane && subslide.pane.length>0){
             var pane = document.getElementById('paneUnder');
-            pane.className="";
+            pane.className="fadeIn8";
 
             var panel = document.getElementById('pane');
-            panel.className="";
+            panel.className="fadeIn";
+
+            paneload(subslide.pane[0])
 
 
         } else {
@@ -243,18 +346,21 @@ function update(a,b){
             var panel = document.getElementById('pane');
             panel.className="hidden";
 
-
-            //pane.className="hidden";
+            paneclear();
 
         }
 
         if (subslide.overlay){
             var over = document.getElementById('overlay');
             over.src=subslide.overlay;
-            over.className="slide";
+            over.className="overlay fadebk";
+            over.onload = (e) => {
+                over.style.opacity=1;
+                console.log('loaded');
+                };
         } else {
             var over = document.getElementById('overlay');
-            over.className="slide hidden";
+            over.className="overlay hidden";
         }
 
         if (subslide.newTitle){
@@ -263,7 +369,38 @@ function update(a,b){
         }
 
         if (subslide.tooltip){
+            var curTitle = document.getElementById('title');
+            var curPanel = document.getElementById('pane');
+
+            var tooltip = document.getElementById('tooltip');
+            tooltip.src = subslide.tooltip;
+            curTitle.classList.add("cursor");
+            curPanel.classList.add("cursor");
+
+            var showHide = (type)=>{
+                if (type){
+                    tooltip.className="tooltip";
+                } else {
+                    tooltip.className="tooltip hidden";
+                }
+            }
+            curTitle.onmouseover = (e)=>showHide('show')
+            curTitle.onmouseout = (e)=>showHide()
+            curPanel.onmouseover = (e)=>showHide('show')
+            curPanel.onmouseout = (e)=>showHide()
+
             //seriously is this a fade on, fade off section
+        } else {
+            var curTitle = document.getElementById('title');
+            var curPanel = document.getElementById('pane');
+            var tooltip = document.getElementById('tooltip');
+            curTitle.onmouseover = null;
+            curTitle.onmouseout = null;
+            curPanel.onmouseover = null;
+            curPanel.onmouseout = null;
+            curTitle.classList.remove("cursor");
+            curPanel.classList.remove("cursor");
+            tooltip.className="tooltip hidden";
         }
 
         internalIndex ++;
@@ -274,9 +411,19 @@ function update(a,b){
 
             var panel = document.getElementById('pane');
             panel.className="hidden";
+            panel.onmouseover = null;
+            panel.onmouseout = null;
 
             var over = document.getElementById('overlay');
-            over.className="slide hidden";
+            over.className="overlay hidden";
+
+            var tt = document.getElementById('tooltip');
+            tt.className="tooltip hidden";
+
+            var curTitle = document.getElementById('title');
+            curTitle.classList.remove("cursor");
+            curTitle.onmouseover = null;
+            curTitle.onmouseout = null;
 
         internalIndex = 0;
         slideIndex ++;

@@ -15,8 +15,40 @@
 
 @font-face {font-family: 'Texta';font-weight: normal;font-style: normal;src: url('./webfonts/35ABAF_5_0.eot');src: url('./webfonts/35ABAF_5_0.eot?#iefix') format('embedded-opentype'),url('./webfonts/35ABAF_5_0.woff2') format('woff2'),url('./webfonts/35ABAF_5_0.woff') format('woff'),url('./webfonts/35ABAF_5_0.ttf') format('truetype');}
 
-p, span {
+@keyframes example {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes examp {
+    from {opacity: 0;}
+    to {opacity: .8;}
+}
+
+.fadebk {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.fadeIn8 {
+	animation-name: examp;
+  animation-duration: 1s;
+}
+
+
+.fadeIn {
+	animation-name: example;
+  animation-duration: 1s;
+
+}
+
+#a, #b, #c {
+	padding: 20px;
+}
+
+p, span, li {
 	font-family: 'Texta';
+	line-height: 1.25rem;
 }
 
 h1,h2,h3 {
@@ -62,7 +94,7 @@ h4,h5 {
 
 .slide {
 	width: 100%;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: -10;
@@ -70,10 +102,18 @@ h4,h5 {
 
 .overlay {
 	width: 100%;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: -5;
+}
+
+.tooltip {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -2;
 }
 
 .off {
@@ -86,7 +126,6 @@ h4,h5 {
 	visibility: visible;
 	padding-left: 40px;
 	font-size: 2rem;
-	cursor: pointer;
 	margin-bottom: 10px;
 }
 
@@ -102,8 +141,15 @@ h4,h5 {
     border: 1px solid black;
     width: 12px;
     border-radius: 2px;
+    cursor: pointer;
 }
 
 .dots:hover, active {
 	  background-color: grey;
 }
+
+.cursor {
+	cursor: cell;
+}
+
+
