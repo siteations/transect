@@ -64,7 +64,7 @@ function handleAuthClick(event) {
 
 function listFiles(objComp) {
   var filesFound = gapi.client.drive.files.list({
-    'pageSize': 100,
+    'pageSize': 200,
     'fields': "nextPageToken, files(id, name, fileExtension, webContentLink)"
   }).then(function(response) {
 

@@ -1235,7 +1235,8 @@ function sort(rowsJson) {
     var obj = {};
 
     rowsJson.forEach(function (row) {
-        if (row.type === 'base' && row.subtype === 'background' && row.active) {
+        if (row.subtype === 'background' && row.active) {
+            //if (row.type==='base' && row.subtype==='background' && row.active){
             obj = {
                 slideSeries: base,
                 background: row.src,
@@ -1248,7 +1249,8 @@ function sort(rowsJson) {
             intern = slides.length - 1;
         }
 
-        if (row.type === 'add' && row.subtype === 'overlay' && row.active) {
+        if (row.subtype === 'overlay' && row.active) {
+            //if (row.type==='add' && row.subtype==='overlay' && row.active){
             var obj = slides[intern]; //current object
             obj.additions.push({
                 overlay: row.src,
@@ -1259,7 +1261,8 @@ function sort(rowsJson) {
             //console.log(slides);
         }
 
-        if (row.type === 'add' && row.subtype === 'pane' && row.active) {
+        //if (row.type==='add' && row.subtype==='pane' && row.active){
+        if (row.subtype === 'pane' && row.active) {
             var obj = slides[intern]; //current object
             if (obj.additions.length > 0 && obj.additions[obj.additions.length - 1].pane === null) {
                 // no current additions, just add overlay pane
@@ -1302,7 +1305,8 @@ function sort(rowsJson) {
             }
         }; //panes checked
 
-        if (row.type === 'add' && row.subtype === 'tooltip' && row.active) {
+        //if (row.type==='add' && row.subtype==='tooltip' && row.active){
+        if (row.subtype === 'tooltip' && row.active) {
             //console.log(row, slides)
             var obj = slides[intern]; //current object
             if (obj.additions.length > 0 && obj.additions[obj.additions.length - 1].tooltip === null) {
@@ -1387,7 +1391,7 @@ function display(objs) {
     };
 
     function list(text) {
-        var arr = text.split('.');
+        var arr = text.split('|');
         var ul = document.createElement('ul');
 
         arr.forEach(function (item) {
@@ -1518,16 +1522,39 @@ function display(objs) {
             }
 
             if (subslide.overlay) {
+                var node = document.getElementById('content');
                 var over = document.getElementById('overlay');
-                over.src = subslide.overlay;
-                over.className = "overlay fadebk";
-                over.onload = function (e) {
-                    over.style.opacity = 1;
-                    console.log('loaded');
+                over.className = "overlay fadeout";
+                over.style.opacity = 0;
+
+                var over2 = document.createElement('img');
+                over2.id = 'overlay';
+                over2.src = subslide.overlay;
+                over2.className = "overlay fadebk";
+                over2.onload = function (e) {
+                    over2.style.opacity = 1;
+                    over = document.getElementById('overlay');
+                    over.remove();
                 };
+                over2.onerror = function (e) {
+                    over = document.getElementById('overlay');
+                    over.remove();
+                };
+
+                node.append(over2);
             } else {
-                var over = document.getElementById('overlay');
-                over.className = "overlay hidden";
+                var over = document.getElementsByClassName('overlay');
+                var arr = Array.from(over);
+                var edit = arr.filter(function (each) {
+                    return each.id === 'overlay';
+                });
+                edit.forEach(function (item, i) {
+                    if (i < edit.length - 1) {
+                        item.remove();
+                    } else {
+                        item.className = "overlay hidden";
+                    }
+                });
             }
 
             if (subslide.newTitle) {
@@ -2522,7 +2549,7 @@ function handleAuthClick(event) {
 
 function listFiles(objComp) {
   var filesFound = gapi.client.drive.files.list({
-    'pageSize': 100,
+    'pageSize': 200,
     'fields': "nextPageToken, files(id, name, fileExtension, webContentLink)"
   }).then(function (response) {
 

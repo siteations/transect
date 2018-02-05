@@ -30,6 +30,11 @@
     transition: opacity 1s;
 }
 
+.fadeout {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
 .fadeIn8 {
 	animation-name: examp;
   animation-duration: 1s;
@@ -69,7 +74,7 @@ h4,h5 {
 	left:70%;
 	border-radius: 10px;
 	background-color: #ffffff;
-	opacity: .85;
+	opacity: .9;
 	box-shadow: 0px 0px 10px #757575;
 }
 
