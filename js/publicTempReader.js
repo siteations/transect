@@ -357,8 +357,10 @@ function update(a,b){
         if (subslide.overlay){
             var node = document.getElementById('content');
                 var over = document.getElementById('overlay');
-                over.className="overlay fadeout";
-                over.style.opacity = 0;
+                if (over.className === 'overlay fadebk'){
+                    over.className="overlay fadeout";
+                    over.style.opacity = 0;
+                }
 
                 var over2 = document.createElement('img');
                 over2.id ='overlay';
